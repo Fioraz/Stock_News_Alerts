@@ -1,16 +1,21 @@
 import requests
 from twilio.rest import Client
+from dotenv import load_dotenv
+import os
 
+load_dotenv('.env')
 STOCK = "TSLA"
+apikey = os.getenv('APIKEY')
 COMPANY_NAME = "Tesla Inc"
 news_dict = {}
 increment = "🔺"
 decrement = "🔻"
-account_sid = "ACCOUNT_SID"
-auth_token = "AUTH_ToKEN"
-STOCKS_API = "STOCK_API_KEY"
-NEWS_API = "NEWS_API_KEY"
-MOBILE_NUMBER = "YOUR_MOBILE_NUMBER"
+account_sid = os.getenv("ACCOUNT_SID")
+auth_token = os.getenv("AUTH_TOKEN")
+STOCKS_API = os.getenv("STOCK_API_KEY")
+NEWS_API = os.getenv("NEWS_API_KEY")
+FROM_MOBILE_NO = os.getenv("FROM_MOBILE_NUMBER")
+TO_MOBILE_NO = os.getenv("TO_MOBILE_NUMBER")
 
 stocks_parameters = {
     "function": "TIME_SERIES_DAILY",
@@ -37,8 +42,8 @@ def stock_price():
 
 def get_news():
     response = requests.get("https://newsapi.org/v2/everything", params=news_parameters)
-    news = response.json()["articles"][:3]
     for x in range(3):
+        news = response.json()["articles"][x]
         news_dict[x] = [news["title"], news["url"]]
     return news_dict
 
@@ -46,15 +51,15 @@ def get_news():
 client = Client(account_sid, auth_token)
 percentage = int(stock_price())
 if percentage > 0:
-    message_heading = f"{STOCK}: {increment}{percentage}%"
+    message_heading = f"{STOCK}: {increment}{percentage}%\n"
 else:
-    message_heading = f"{STOCK}: {decrement}{abs(percentage)}%"
+    message_heading = f"{STOCK}: {decrement}{abs(percentage)}%\n"
 
 client.messages.create(
     body=f"{message_heading}\n"
-         f"Headline: {get_news()[0][0]}. \nBrief: {get_news()[0][1]}\n"
-         f"Headline: {get_news()[1][0]}. \nBrief: {get_news()[1][1]}\n"
+         f"Headline: {get_news()[0][0]}. \nBrief: {get_news()[0][1]}\n\n"
+         f"Headline: {get_news()[1][0]}. \nBrief: {get_news()[1][1]}\n\n"
          f"Headline: {get_news()[2][0]}. \nBrief: {get_news()[2][1]}",
-    from_='+447700000000',
-    to=MOBILE_NUMBER
+    from_=FROM_MOBILE_NO,
+    to=TO_MOBILE_NO
 )
