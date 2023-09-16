@@ -5,7 +5,6 @@ import os
 
 load_dotenv('.env')
 STOCK = "TSLA"
-apikey = os.getenv('APIKEY')
 COMPANY_NAME = "Tesla Inc"
 news_dict = {}
 increment = "🔺"

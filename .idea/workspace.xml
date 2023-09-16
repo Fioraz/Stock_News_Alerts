@@ -4,8 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5db225f6-1855-4b1f-aa38-94735d496e1b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="5db225f6-1855-4b1f-aa38-94735d496e1b" name="Changes" comment="Stock News Alerts using APIs">
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -95,6 +94,14 @@
       <option name="presentableId" value="Default" />
       <updated>1694620113801</updated>
     </task>
+    <task id="LOCAL-00001" summary="Stock News Alerts using APIs">
+      <created>1694891943938</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1694891943939</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -107,5 +114,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Stock News Alerts using APIs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Stock News Alerts using APIs" />
   </component>
 </project>
